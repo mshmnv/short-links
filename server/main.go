@@ -1,7 +1,13 @@
 package main
 
+// database short_db
+// table short
+// post 5432
+
 import (
+	"context"
 	"database/sql"
+	_ "github.com/lib/pq"
 	"google.golang.org/grpc"
 	"log"
 	"math/rand"
@@ -10,33 +16,6 @@ import (
 	"strings"
 	"time"
 )
-//
-//warning: adding embedded git repository: src/github.com/gin-gonic/gin
-//warning: adding embedded git repository: src/github.com/go-playground/locales
-//warning: adding embedded git repository: src/github.com/go-playground/universal-translator
-//warning: adding embedded git repository: src/github.com/go-playground/validator
-//warning: adding embedded git repository: src/github.com/golang/protobuf
-//warning: adding embedded git repository: src/github.com/leodido/go-urn
-//warning: adding embedded git repository: src/github.com/lib/pq
-//warning: adding embedded git repository: src/github.com/mattn/go-isatty
-//warning: adding embedded git repository: src/github.com/ugorji/go
-//warning: adding embedded git repository: src/golang.org/x/crypto
-//warning: adding embedded git repository: src/golang.org/x/net
-//warning: adding embedded git repository: src/golang.org/x/sys
-//warning: adding embedded git repository: src/golang.org/x/text
-//warning: adding embedded git repository: src/google.golang.org/genproto
-//warning: adding embedded git repository: src/google.golang.org/grpc
-//warning: adding embedded git repository: src/google.golang.org/protobuf
-//warning: adding embedded git repository: src/gopkg.in/yaml.v2
-
-
-
-
-// database short_db
-// table short
-// post 5432
-
-
 
 const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"
 

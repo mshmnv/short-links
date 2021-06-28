@@ -25,7 +25,7 @@ func GetDB() *sql.DB {
 	var err error
 	if db == nil {
 		db, err = sql.Open("postgres",
-			"host=127.0.0.1 port=5432 dbname=short_db sslmode=disable user=postgres password=postgres")
+			"host=database_container port=5432 dbname=short_db sslmode=disable user=postgres password=postgres")
 		if err != nil {
 			log.Fatalf("Unable to connect to database: %s", err)
 		}
@@ -120,7 +120,7 @@ func (s *ShortServer) Get(ctx context.Context, req *ps.LinkRequest) (*ps.UrlResp
 func main() {
 	// ...   connecting to database   ...
 	db, err := sql.Open("postgres",
-		"host=127.0.0.1 port=5432 dbname=short_db user=postgres password=postgres sslmode=disable")
+		"host=database_container port=5432 dbname=short_db user=postgres password=postgres sslmode=disable")
 	if err != nil {
 		log.Fatalf("Unable to connect to database: %s", err)
 	}

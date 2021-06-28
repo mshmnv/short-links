@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	conn, err := grpc.Dial("127.0.0.1:4040", grpc.WithInsecure())
+	conn, err := grpc.Dial("server_container:4040", grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("Unable to connect: %s", err)
 	}
@@ -20,6 +20,7 @@ func main() {
 	router.Static("/css", "html/css")
 	router.LoadHTMLGlob("html/*.html")
 
+	// main page
 	router.GET("/", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "short.",
@@ -33,7 +34,6 @@ func main() {
 			ctx.HTML(http.StatusOK, "get.html", gin.H{
 				"title": "short.",
 				"url":   response.Url,
-				"link":  req.Link,
 			})
 		} else {
 			ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
